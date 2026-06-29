@@ -1,0 +1,36 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-assurance:
+    name: Code Quality and Testing
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+      
+      - name: Validate Git Commit Message Semantics
+        uses: taskmedia/action-conventional-commits@v1.1.1
+        with:
+          types: "feat|fix|docs|style|refactor|perf|test|build|ci|chore"
+      
+      - name: Set up Go Runtime
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.26'
+          cache: true
+
+      - name: Verify Module Dependencies
+        run: go mod download && go mod verify
+
+      - name: Execute Code Linter Compliance
+        run: make lint
+
+      - name: Run Unit Tests and Validate Coverage Target
+        run: make coverage
