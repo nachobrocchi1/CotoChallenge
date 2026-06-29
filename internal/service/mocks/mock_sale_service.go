@@ -56,19 +56,19 @@ func (mr *MockSaleServiceMockRecorder) CreateSale(ctx, vehicle, center any) *gom
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateSale", reflect.TypeOf((*MockSaleService)(nil).CreateSale), ctx, vehicle, center)
 }
 
-// GetSalesPercentegeByCenterOverTotalSales mocks base method.
-func (m *MockSaleService) GetSalesPercentegeByCenterOverTotalSales(ctx context.Context) ([]dto.CenterModelPercentage, error) {
+// GetSalesPercentageByCenterOverTotalSales mocks base method.
+func (m *MockSaleService) GetSalesPercentageByCenterOverTotalSales(ctx context.Context) ([]dto.CenterModelPercentage, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetSalesPercentegeByCenterOverTotalSales", ctx)
+	ret := m.ctrl.Call(m, "GetSalesPercentageByCenterOverTotalSales", ctx)
 	ret0, _ := ret[0].([]dto.CenterModelPercentage)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetSalesPercentegeByCenterOverTotalSales indicates an expected call of GetSalesPercentegeByCenterOverTotalSales.
-func (mr *MockSaleServiceMockRecorder) GetSalesPercentegeByCenterOverTotalSales(ctx any) *gomock.Call {
+// GetSalesPercentageByCenterOverTotalSales indicates an expected call of GetSalesPercentageByCenterOverTotalSales.
+func (mr *MockSaleServiceMockRecorder) GetSalesPercentageByCenterOverTotalSales(ctx any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSalesPercentegeByCenterOverTotalSales", reflect.TypeOf((*MockSaleService)(nil).GetSalesPercentegeByCenterOverTotalSales), ctx)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSalesPercentageByCenterOverTotalSales", reflect.TypeOf((*MockSaleService)(nil).GetSalesPercentageByCenterOverTotalSales), ctx)
 }
 
 // GetTotalVolume mocks base method.

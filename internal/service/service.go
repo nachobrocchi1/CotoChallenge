@@ -16,7 +16,7 @@ type SaleService interface {
 	CreateSale(ctx context.Context, vehicle domain.VehicleType, center string) error
 	GetTotalVolume(ctx context.Context) (float64, error)
 	GetVolumeByCenter(ctx context.Context) (map[string]float64, error)
-	GetSalesPercentegeByCenterOverTotalSales(ctx context.Context) ([]dto.CenterModelPercentage, error)
+	GetSalesPercentageByCenterOverTotalSales(ctx context.Context) ([]dto.CenterModelPercentage, error)
 }
 
 type SaleServiceImpl struct {
@@ -77,8 +77,8 @@ func (s *SaleServiceImpl) GetVolumeByCenter(ctx context.Context) (map[string]flo
 	return volume, nil
 }
 
-// GetSalesPercentegeByCenterOverTotalSales calculates the percentage of sales by Vehicle for each Center over all sales.
-func (s *SaleServiceImpl) GetSalesPercentegeByCenterOverTotalSales(ctx context.Context) ([]dto.CenterModelPercentage, error) {
+// GetSalesPercentageByCenterOverTotalSales calculates the percentage of sales by Vehicle for each Center over all sales.
+func (s *SaleServiceImpl) GetSalesPercentageByCenterOverTotalSales(ctx context.Context) ([]dto.CenterModelPercentage, error) {
 	sales, err := s.repository.GetSales(ctx)
 	if err != nil {
 		s.logger.Printf("GetSalesPercentegeByCenterOverTotalSales - error calling repository.GetSales %s", err.Error())

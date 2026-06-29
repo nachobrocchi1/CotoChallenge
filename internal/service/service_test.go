@@ -315,7 +315,7 @@ func TestSaleServiceImpl_GetSalesPercentegeByCenterOverTotalSales(t *testing.T) 
 			tt.setup(mockRepo)
 
 			s := newTestService(t, mockRepo)
-			got, err := s.GetSalesPercentegeByCenterOverTotalSales(context.Background())
+			got, err := s.GetSalesPercentageByCenterOverTotalSales(context.Background())
 
 			if (err != nil) != tt.wantErr {
 				t.Fatalf("GetSalesPercentegeByCenterOverTotalSales() error = %v, wantErr %v", err, tt.wantErr)

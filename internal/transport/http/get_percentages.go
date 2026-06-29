@@ -6,7 +6,7 @@ import (
 
 // GetSalesPercentegeByCenterOverTotalSales gets the percentage of sales by center over total sales
 func (h *SaleHandler) GetSalesPercentegeByCenterOverTotalSales(w http.ResponseWriter, r *http.Request) {
-	percentages, err := h.service.GetSalesPercentegeByCenterOverTotalSales(r.Context())
+	percentages, err := h.service.GetSalesPercentageByCenterOverTotalSales(r.Context())
 	if err != nil {
 		EncodeError(w, http.StatusInternalServerError, err)
 		return
