@@ -101,6 +101,9 @@ func seedSales(repo repository.SaleRepository) {
 	}
 
 	for _, s := range sales {
-		repo.CreateSale(context.Background(), s)
+		err := repo.CreateSale(context.Background(), s)
+		if err != nil {
+			continue
+		}
 	}
 }

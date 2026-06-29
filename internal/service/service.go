@@ -102,7 +102,7 @@ func (s *SaleServiceImpl) GetSalesPercentegeByCenterOverTotalSales(ctx context.C
 		// iterate over each vehicle model sold in this center
 		for vehicle, count := range models {
 
-			// precentage calculation for the model over the total units sold
+			// percentage calculation for the model over the total units sold
 			percentage := (float64(count) / float64(totalUnits)) * 100
 
 			modelPercentages = append(modelPercentages, dto.ModelPercentage{
