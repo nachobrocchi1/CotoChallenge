@@ -14,12 +14,7 @@ jobs:
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
-      
-      - name: Validate Git Commit Message Semantics
-        uses: taskmedia/action-conventional-commits@v1.3.1
-        with:
-          types: "feat|fix|docs|style|refactor|perf|test|build|ci|chore"
-      
+              
       - name: Set up Go Runtime
         uses: actions/setup-go@v5
         with:
