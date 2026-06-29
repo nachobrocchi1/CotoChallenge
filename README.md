@@ -33,7 +33,7 @@ curl --location 'localhost:8080/api/v1/volume'
 curl --location 'localhost:8080/api/v1/volume/center'
 ```
 
-- Obtener el volumen de ventas por centro.
+- Obtener el porcentaje de unidades por modelo y centro sobre el total de ventas.
 ``` bash 
 curl --location 'localhost:8080/api/v1/sales/percentage'
 ```
@@ -50,7 +50,7 @@ Se utilizo una arquitectura Clean Architecture, organizando el codigo en capas d
 
 ```internal/domain``` contiene las definiciones de entidades de negocio. Tambien incluye reglas de negocio como por ejemplo el impuesto agregado a los vehiculos de tipo Sport y el calculo del precio final de cada vehiculo.
 
-```internal/repository``` Define abstraccion de persistencia mediante interface ```SaleRespository```. Incluye una implementacion concreta ```in_memory_repository.go``` que contiene un slice protegido por un ```sync.RWmutex()``` para garantizar accesos seguros entre requests.
+```internal/repository``` Define abstraccion de persistencia mediante interface ```SaleRepository```. Incluye una implementacion concreta ```in_memory_repository.go``` que contiene un slice protegido por un ```sync.RWmutex()``` para garantizar accesos seguros entre requests.
 
 ```internal/service``` Define los casos de uso del sistema. Es donde vive la logica de negocio.
 
