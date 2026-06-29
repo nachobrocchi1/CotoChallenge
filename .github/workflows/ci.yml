@@ -29,3 +29,12 @@ jobs:
 
       - name: Run Unit Tests and Validate Coverage Target
         run: make coverage
+
+      - name: Enforce Minimum Coverage Threshold (80%)
+        run: |
+          COVERAGE=$(go tool cover -func=coverage.out | grep total | awk '{print $3}' | sed 's/%//')
+          echo "Total coverage: $COVERAGE%"
+          if (( $(echo "$COVERAGE < 80" | bc -l) )); then
+            echo "Coverage $COVERAGE% is below the required 80% threshold"
+            exit 1
+          fi

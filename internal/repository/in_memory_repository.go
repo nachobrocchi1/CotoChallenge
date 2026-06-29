@@ -37,22 +37,6 @@ func (r *InMemorySaleRepository) GetSales(ctx context.Context) ([]domain.Sale, e
 	return cloneSales(r.sales), nil
 }
 
-func (r *InMemorySaleRepository) GetSalesByCenter(ctx context.Context, center string) ([]domain.Sale, error) {
-	r.mu.RLock()
-	defer r.mu.RUnlock()
-	sales := make([]domain.Sale, 0)
-	for _, sale := range r.sales {
-		if sale.Center == center {
-			sales = append(sales, sale)
-		}
-	}
-	return sales, nil
-}
-
-func (r *InMemorySaleRepository) GetSalesPercentegeByCenterOverTotalSales(ctx context.Context) (float64, error) {
-	return 0, nil
-}
-
 func cloneSales(sales []domain.Sale) []domain.Sale {
 	clone := make([]domain.Sale, len(sales))
 	copy(clone, sales)

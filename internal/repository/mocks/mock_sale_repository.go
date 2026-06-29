@@ -69,33 +69,3 @@ func (mr *MockSaleRepositoryMockRecorder) GetSales(ctx any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSales", reflect.TypeOf((*MockSaleRepository)(nil).GetSales), ctx)
 }
-
-// GetSalesByCenter mocks base method.
-func (m *MockSaleRepository) GetSalesByCenter(cctx context.Context, enter string) ([]domain.Sale, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetSalesByCenter", cctx, enter)
-	ret0, _ := ret[0].([]domain.Sale)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// GetSalesByCenter indicates an expected call of GetSalesByCenter.
-func (mr *MockSaleRepositoryMockRecorder) GetSalesByCenter(cctx, enter any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSalesByCenter", reflect.TypeOf((*MockSaleRepository)(nil).GetSalesByCenter), cctx, enter)
-}
-
-// GetSalesPercentegeByCenterOverTotalSales mocks base method.
-func (m *MockSaleRepository) GetSalesPercentegeByCenterOverTotalSales(ctx context.Context) (float64, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetSalesPercentegeByCenterOverTotalSales", ctx)
-	ret0, _ := ret[0].(float64)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// GetSalesPercentegeByCenterOverTotalSales indicates an expected call of GetSalesPercentegeByCenterOverTotalSales.
-func (mr *MockSaleRepositoryMockRecorder) GetSalesPercentegeByCenterOverTotalSales(ctx any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSalesPercentegeByCenterOverTotalSales", reflect.TypeOf((*MockSaleRepository)(nil).GetSalesPercentegeByCenterOverTotalSales), ctx)
-}
