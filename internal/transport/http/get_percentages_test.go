@@ -24,7 +24,7 @@ func TestGetSalesPercentegeByCenterOverTotalSales(t *testing.T) {
 			name: "returns percentages successfully",
 			mockSetup: func(m *mocks.MockSaleService) {
 				m.EXPECT().
-					GetSalesPercentegeByCenterOverTotalSales(gomock.Any()).
+					GetSalesPercentageByCenterOverTotalSales(gomock.Any()).
 					Return([]dto.CenterModelPercentage{
 						{
 							Center: "C1",
@@ -62,7 +62,7 @@ func TestGetSalesPercentegeByCenterOverTotalSales(t *testing.T) {
 			name: "returns empty slice when no sales exist",
 			mockSetup: func(m *mocks.MockSaleService) {
 				m.EXPECT().
-					GetSalesPercentegeByCenterOverTotalSales(gomock.Any()).
+					GetSalesPercentageByCenterOverTotalSales(gomock.Any()).
 					Return([]dto.CenterModelPercentage{}, nil)
 			},
 			expectedStatus: http.StatusOK,
@@ -72,7 +72,7 @@ func TestGetSalesPercentegeByCenterOverTotalSales(t *testing.T) {
 			name: "returns 500 when service fails",
 			mockSetup: func(m *mocks.MockSaleService) {
 				m.EXPECT().
-					GetSalesPercentegeByCenterOverTotalSales(gomock.Any()).
+					GetSalesPercentageByCenterOverTotalSales(gomock.Any()).
 					Return(nil, errors.New("internal error"))
 			},
 			expectedStatus: http.StatusInternalServerError,

@@ -16,7 +16,7 @@ type SaleService interface {
 	CreateSale(ctx context.Context, vehicle domain.VehicleType, center string) error
 	GetTotalVolume(ctx context.Context) (float64, error)
 	GetVolumeByCenter(ctx context.Context) (map[string]float64, error)
-	GetSalesPercentegeByCenterOverTotalSales(ctx context.Context) ([]dto.CenterModelPercentage, error)
+	GetSalesPercentageByCenterOverTotalSales(ctx context.Context) ([]dto.CenterModelPercentage, error)
 }
 
 type SaleServiceImpl struct {
@@ -31,6 +31,7 @@ func NewSaleService(logger *log.Logger, repository repository.SaleRepository) (S
 	}, nil
 }
 
+// CreateSale creates a sale
 func (s *SaleServiceImpl) CreateSale(ctx context.Context, vehicle domain.VehicleType, center string) error {
 	sale := domain.Sale{
 		Vehicle: vehicle,
@@ -47,6 +48,7 @@ func (s *SaleServiceImpl) CreateSale(ctx context.Context, vehicle domain.Vehicle
 	return nil
 }
 
+// GetTotalVolume gets the total volume earned across all the centers
 func (s *SaleServiceImpl) GetTotalVolume(ctx context.Context) (float64, error) {
 	sales, err := s.repository.GetSales(ctx)
 	if err != nil {
@@ -60,6 +62,7 @@ func (s *SaleServiceImpl) GetTotalVolume(ctx context.Context) (float64, error) {
 	return total, err
 }
 
+// GetVolumeByCenter gets the total volume earned by center
 func (s *SaleServiceImpl) GetVolumeByCenter(ctx context.Context) (map[string]float64, error) {
 	sales, err := s.repository.GetSales(ctx)
 	if err != nil {
@@ -74,7 +77,8 @@ func (s *SaleServiceImpl) GetVolumeByCenter(ctx context.Context) (map[string]flo
 	return volume, nil
 }
 
-func (s *SaleServiceImpl) GetSalesPercentegeByCenterOverTotalSales(ctx context.Context) ([]dto.CenterModelPercentage, error) {
+// GetSalesPercentageByCenterOverTotalSales calculates the percentage of sales by Vehicle for each Center over all sales.
+func (s *SaleServiceImpl) GetSalesPercentageByCenterOverTotalSales(ctx context.Context) ([]dto.CenterModelPercentage, error) {
 	sales, err := s.repository.GetSales(ctx)
 	if err != nil {
 		s.logger.Printf("GetSalesPercentegeByCenterOverTotalSales - error calling repository.GetSales %s", err.Error())
