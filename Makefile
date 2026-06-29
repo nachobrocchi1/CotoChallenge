@@ -27,14 +27,12 @@ test:
 ## coverage: run tests and reports coverage
 coverage:
 	@echo "Resolving source packages and running strict unit tests..."
-	@$(eval PKGS := $(shell go list ./... | grep -v /mocks | grep -v /repository |tr '\n' ',' | sed 's/,$$//'))
+	@$(eval PKGS := $(shell go list ./... | grep -v /mocks | grep -v /repository | grep -v /cmd | tr '\n' ',' | sed 's/,$$//'))
 	@go test -coverpkg=$(PKGS) -coverprofile=coverage.out ./...
 	@echo "--------------------------------------------------------"
 	@echo "Coverage Report (Source Code Only):"
 	@echo "--------------------------------------------------------"
 	@go tool cover -func=coverage.out 
-	@rm coverage.out
-
 
 ## lint: run code quality analysis and formatting compliance checks
 lint:

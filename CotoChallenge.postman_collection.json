@@ -1,0 +1,101 @@
+{
+  "info": {
+    "_postman_id": "673cdb30-b1b7-41f5-a187-f1a2ed4bb8a6",
+    "name": "CotoChallenge",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18055805"
+  },
+  "item": [
+    {
+      "name": "Crear Venta",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"vehicle\": \"sedan\",\n    \"center\": \"center1\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/v1/sales",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "sales"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Volumen Total",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/v1/volume",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "volume"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Volumen por centro",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/v1/volume/center",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "volume",
+            "center"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Percentages",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/v1/sales/percentage",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "sales",
+            "percentage"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

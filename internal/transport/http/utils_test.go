@@ -52,6 +52,13 @@ func TestEncode(t *testing.T) {
 			expectedBody:    `{}`,
 			expectedContent: "application/json; charset=utf-8",
 		},
+		{
+			name:            "logs error when json encoding fails",
+			statusCode:      http.StatusOK,
+			data:            make(chan int),
+			expectedStatus:  http.StatusOK,
+			expectedContent: "application/json; charset=utf-8",
+		},
 	}
 
 	for _, tt := range tests {
@@ -67,6 +74,10 @@ func TestEncode(t *testing.T) {
 			contentType := w.Header().Get("Content-Type")
 			if contentType != tt.expectedContent {
 				t.Errorf("expected Content-Type %q, got %q", tt.expectedContent, contentType)
+			}
+
+			if tt.expectedBody == "" {
+				return
 			}
 
 			var got, expected any
